@@ -16,6 +16,10 @@
 		body {
 			padding-top: 20px;
 		}
+
+		#scrollingtext {
+			pointer-events: none;
+		}
 	</style>
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -33,8 +37,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<div id="scrollingtext">
+	</div>
+
 	<div class="container">
-		<form>
+		<form class="jumbotron">
 			<div class="form-group">
 				<input id="animContent" class="form-control" type="text" name="animContent" value="" placeholder="The quick brown fox jumps over the lazy dog">
 			</div>
@@ -45,9 +52,6 @@
 				<input type="button" class="btn btn-default" name="" onclick="shootText()" value="Shoot some text!">
 			</div>
 		</form>
-	</div>
-
-	<div id="scrollingtext">
 	</div>
 
 	<script type="text/javascript">
@@ -63,7 +67,6 @@
 			var animContent = document.getElementById("animContent").value;
 			var animSpeed = document.getElementById("animSpeed").value;
 
-
 			if(!animContent)
 				animContent = "The quick brown fox jumps over the lazy dog"
 
@@ -72,7 +75,7 @@
 
 			stringnode.style["position"] = "absolute";
 			stringnode.style["animation-name"] = "sidescroll";
-			stringnode.style["animation-duration"] = (5 - animSpeed).toString() + "s";
+			stringnode.style["animation-duration"] = (4.5 - animSpeed).toString() + "s";
 			stringnode.style["top"] = (Math.random() * 95).toString() + "vh";
 
 			stringnode.appendChild(stringcontent);
@@ -80,7 +83,7 @@
 
 			setTimeout(function() {
 				context.removeChild(stringnode);
-			}, (5 - animSpeed)*1000 - 50);
+			}, (4.5 - animSpeed)*1000 - 50);
 		}
 	</script>
 </body>
