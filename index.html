@@ -1,106 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sidescrolling Text</title>
-	<style>
-		@keyframes sidescroll {
-			from {
-				transform: translateX(-100%);
-			}
+    <title>Sidescrolling Text</title>
+    <style>
+        @keyframes sidescroll {
+            from {
+                transform: translateX(-100%);
+            }
 
-			to {
-				transform: translateX(100vw);
-			}
-		}
+            to {
+                transform: translateX(100vw);
+            }
+        }
 
-		body {
-			padding-top: 20px;
-		}
+        body {
+            padding-top: 20px;
+        }
 
-		#scrollingtext {
-			pointer-events: none;
-		}
+        #scrollingtext {
+            pointer-events: none;
+        }
 
-		.footer {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			height: 60px;
-			background-color: #eee;
-		}
-	</style>
-	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-	  crossorigin="anonymous"></script>
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #eee;
+        }
+    </style>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
 
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Bootstrap JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css" crossorigin="anonymous">
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="scrollingtext">
-	</div>
+    <div id="scrollingtext">
+    </div>
 
-	<div class="container">
-		<form class="jumbotron">
-			<div class="form-group">
-				<input id="animContent" class="form-control" type="text" name="animContent" value="" placeholder="The quick brown fox jumps over the lazy dog">
-			</div>
-			<div class="form-group">
-				<input id="animSpeed" type="range" name="animSpeed" data-slider-value="2.5" data-slider-min="0.5" data-slider-max="5" data-slider-step="0.05" placeholder="">
-			</div>
-			<div class="form-group">
-				<input type="button" class="btn btn-default" name="" onclick="shootText()" value="Shoot some text!">
-			</div>
-		</form>
+    <div class="container">
+        <form class="jumbotron">
+            <div class="form-group">
+                <input id="animContent" class="form-control" type="text" name="animContent" value="" placeholder="The quick brown fox jumps over the lazy dog">
+            </div>
+            <div class="form-group">
+                <input id="animSpeed" type="range" name="animSpeed" data-slider-value="2.5" data-slider-min="0.5" data-slider-max="5" data-slider-step="0.05" placeholder="">
+            </div>
+            <div class="form-group">
+                <input type="button" class="btn btn-default" name="" onclick="shootText()" value="Shoot some text!">
+            </div>
+        </form>
 
-		
-	</div>
+        
+    </div>
 
-	<footer class="footer">
-		<div class="container">
-			<p class="text-muted text-center" style="margin: 20px 0;">Code located <a href="https://github.com/KennyWibowo/SidescrollingText">here</a>, by Kenny Wibowo</p>
-		</div>
-	</footer>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted text-center" style="margin: 20px 0;">Code located <a href="https://github.com/KennyWibowo/SidescrollingText">here</a>, by Kenny Wibowo</p>
+        </div>
+    </footer>
 
-	<script type="text/javascript">
-		var context = document.getElementById("scrollingtext");
+    <script type="text/javascript">
+        var context = document.getElementById("scrollingtext");
 
-		$('#animSpeed').slider({
-			formatter: function(value) {
-				return 'Current value: ' + value;
-			}
-		});
+        $('#animSpeed').slider({
+            formatter: function(value) {
+                return 'Current value: ' + value;
+            }
+        });
 
-		function shootText() {
-			var animContent = document.getElementById("animContent").value;
-			var animSpeed = document.getElementById("animSpeed").value;
+        function shootText() {
+            var animContent = document.getElementById("animContent").value;
+            var animSpeed = document.getElementById("animSpeed").value;
 
-			if(!animContent)
-				animContent = "The quick brown fox jumps over the lazy dog"
+            if(!animContent)
+                animContent = "The quick brown fox jumps over the lazy dog"
 
-			var stringnode = document.createElement("DIV");
-			var stringcontent = document.createTextNode(animContent);
+            var stringnode = document.createElement("DIV");
+            var stringcontent = document.createTextNode(animContent);
 
-			stringnode.style["position"] = "absolute";
-			stringnode.style["animation-name"] = "sidescroll";
-			stringnode.style["animation-duration"] = (4.5 - animSpeed).toString() + "s";
-			stringnode.style["top"] = (Math.random() * 95).toString() + "vh";
+            stringnode.style["position"] = "absolute";
+            stringnode.style["animation-name"] = "sidescroll";
+            stringnode.style["animation-duration"] = (4.5 - animSpeed).toString() + "s";
+            stringnode.style["top"] = (Math.random() * 95).toString() + "vh";
 
-			stringnode.appendChild(stringcontent);
-			context.appendChild(stringnode);
+            stringnode.appendChild(stringcontent);
+            context.appendChild(stringnode);
 
-			setTimeout(function() {
-				context.removeChild(stringnode);
-			}, (4.5 - animSpeed)*1000 - 50);
-		}
-	</script>
+            setTimeout(function() {
+                context.removeChild(stringnode);
+            }, (4.5 - animSpeed)*1000 - 50);
+        }
+    </script>
 </body>
 </html>
