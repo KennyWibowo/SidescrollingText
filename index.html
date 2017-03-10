@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sidescrolling Text</title>
+	<style>
+		@keyframes sidescroll {
+			from {
+				transform: translateX(-100%);
+			}
+
+			to {
+				transform: translateX(100vw);
+			}
+		}
+	</style>
+</head>
+<body>
+	<input id="animContent" type="text" name="animContent" value="" placeholder="The quick brown fox jumps over the lazy dog">
+	<input id="animSpeed" type="range" name="animSpeed" value="2.5" min="0.5" max="5" step="0.05" placeholder="">
+	<input type="button" name="" onclick="shootText()" value="Shoot some text!">
+
+	<div id="scrollingtext">
+	</div>
+
+	<script type="text/javascript">
+		var context = document.getElementById("scrollingtext");
+
+		function shootText() {
+			var animContent = document.getElementById("animContent").value;
+			var animSpeed = document.getElementById("animSpeed").value;
+
+
+			if(!animContent)
+				animContent = "The quick brown fox jumps over the lazy dog"
+
+			var stringnode = document.createElement("DIV");
+			var stringcontent = document.createTextNode(animContent);
+
+			stringnode.style["position"] = "absolute";
+			stringnode.style["animation-name"] = "sidescroll";
+			stringnode.style["animation-duration"] = (5 - animSpeed).toString() + "s";
+			stringnode.style["top"] = (Math.random() * 100).toString() + "vh";
+
+			stringnode.appendChild(stringcontent);
+			context.appendChild(stringnode);
+
+			setTimeout(function() {
+				context.removeChild(stringnode);
+			}, (5 - animSpeed)*1000 - 50);
+		}
+	</script>
+</body>
+</html>
